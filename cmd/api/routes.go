@@ -4,6 +4,8 @@ import (
 	"net/http"
 
 	"github.com/julienschmidt/httprouter"
+
+	hWallet "github.com/fajarabdillahfn/go-wallet/internal/delivery/http"
 )
 
 func routes(router *httprouter.Router) {
@@ -13,4 +15,7 @@ func routes(router *httprouter.Router) {
 			return
 		}
 	})
+
+	router.POST("/wallets", hWallet.DepositMoney)
+	router.GET("/wallets/:wallet_id", hWallet.GetWalletDetails)
 }
